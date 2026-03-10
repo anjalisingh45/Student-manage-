@@ -1,0 +1,38 @@
+.table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.table th{
+  background:linear-gradient(90deg,#6366f1,#5b5bd6);
+  color:white;
+  padding:12px;
+  text-align:left;
+}
+
+.table td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+.edit{
+  background:#22c55e;
+  border:none;
+  padding:6px 14px;
+  color:white;
+  border-radius:5px;
+  margin-right:8px;
+  cursor:pointer;
+}
+
+.delete{
+  background:#ef4444;
+  border:none;
+  padding:6px 14px;
+  color:white;
+  border-radius:5px;
+  cursor:pointer;
+}

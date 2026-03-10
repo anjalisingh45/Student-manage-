@@ -1,0 +1,14 @@
+.app {
+  text-align: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.loading {
+  font-size: 18px;
+  color: gray;
+}
