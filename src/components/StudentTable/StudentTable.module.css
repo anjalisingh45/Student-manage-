@@ -1,38 +1,107 @@
-.table{
-  width:100%;
-  border-collapse:collapse;
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
-.table th{
-  background:linear-gradient(90deg,#6366f1,#5b5bd6);
-  color:white;
-  padding:12px;
-  text-align:left;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
-.table td{
-  padding:12px;
-  border-bottom:1px solid #eee;
+/* Header */
+.table thead tr {
+  background: #f9fafb;
+  border-bottom: 1.5px solid #e5e7eb;
 }
 
-.edit{
-  background:#22c55e;
-  border:none;
-  padding:6px 14px;
-  color:white;
-  border-radius:5px;
-  margin-right:8px;
-  cursor:pointer;
+.table thead th {
+  padding: 13px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.delete{
-  background:#ef4444;
-  border:none;
-  padding:6px 14px;
-  color:white;
-  border-radius:5px;
-  cursor:pointer;
+/* Body rows */
+.table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.15s;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: #fafafa;
+}
+
+.table tbody td {
+  padding: 14px 20px;
+  color: #374151;
+  font-size: 14px;
+}
+
+/* Actions cell */
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.editBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  background: #ede9fe;
+  color: #7c3aed;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.editBtn:hover {
+  background: #ddd6fe;
+}
+
+.deleteBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.deleteBtn:hover {
+  background: #fecaca;
+}
+
+/* Empty state */
+.emptyState {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+}
+
+.noData {
+  color: #9ca3af;
+  font-size: 15px;
 }

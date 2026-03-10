@@ -1,38 +1,154 @@
-.layout{
-  display:flex;
+.layout {
+  display: flex;
+  min-height: 100vh;
 }
 
-.content{
-  margin-left:220px;
-  padding:40px;
-  width:100%;
-  background:#f4f6fb;
-  min-height:100vh;
+.mainContent {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  display: flex;
+  flex-direction: column;
+  background: #f3f4f6;
+  min-height: 100vh;
 }
 
-.title{
-  font-size:28px;
-  margin-bottom:20px;
+/* Header bar */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.topBar{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
+.headerTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
 }
 
-.search{
-  padding:10px;
-  width:300px;
-  border-radius:6px;
-  border:1px solid #ccc;
+/* Page content */
+.pageContent {
+  padding: 36px 40px;
 }
 
-.exportBtn{
-  background:#6366f1;
-  color:white;
-  border:none;
-  padding:10px 16px;
-  border-radius:6px;
-  cursor:pointer;
+.pageHeading {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Top bar: search + export */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+
+.search {
+  padding: 10px 14px;
+  width: 300px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 14px;
+  background: #ffffff;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search::placeholder {
+  color: #9ca3af;
+}
+
+.search:focus {
+  border-color: #1A1B2E;
+}
+
+.exportBtn {
+  background: linear-gradient(135deg, #1A1B2E, #6d28d9);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.exportBtn:hover {
+  opacity: 0.9;
+}
+
+/* Import Excel file input - styled as a button */
+.importInput {
+  padding: 9px 14px;
+  border-radius: 8px;
+  border: 1.5px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  white-space: nowrap;
+}
+
+.importInput:hover {
+  border-color: #1A1B2E;
+}
+
+.importInput::file-selector-button {
+  padding: 5px 12px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #1A1B2E;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.importInput::file-selector-button:hover {
+  opacity: 0.85;
+}
+.importWrapper {
+  margin-top: 15px;
+}
+
+.importBtn {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #1A1B2E;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.importBtn:hover {
+  background-color: #1A1B2E;
+}
+
+.importBtn input {
+  display: none;
 }

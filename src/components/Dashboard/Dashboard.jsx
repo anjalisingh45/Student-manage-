@@ -1,34 +1,59 @@
 import styles from "./Dashboard.module.css";
+import { Users, TrendingUp, UserPlus, GraduationCap } from "lucide-react";
 
-const Dashboard = ({ students }) => {
-
-  const total = students.length;
-
+const Dashboard = ({ students = [] }) => {
   const avgAge =
-    students.reduce((acc, s) => acc + s.age, 0) /
-    (students.length || 1);
+    students.length > 0
+      ? Math.round(
+          students.reduce((sum, s) => sum + Number(s.age), 0) / students.length
+        )
+      : 0;
 
-  const newest = students[students.length - 1]?.name;
+  const newestStudent =
+    students.length > 0 ? students[students.length - 1].name : "N/A";
+
+  const stats = [
+    {
+      label: "TOTAL STUDENTS",
+      value: students.length,
+      icon: <Users size={22} color="white" />,
+      iconBg: styles.iconPurple,
+    },
+    {
+      label: "AVG AGE",
+      value: avgAge,
+      icon: <TrendingUp size={22} color="white" />,
+      iconBg: styles.iconTeal,
+    },
+    {
+      label: "NEWEST",
+      value: newestStudent,
+      icon: <UserPlus size={22} color="white" />,
+      iconBg: styles.iconPurple,
+    },
+    {
+      label: "ACTIVE",
+      value: students.length,
+      icon: <GraduationCap size={22} color="white" />,
+      iconBg: styles.iconGreen,
+    },
+  ];
 
   return (
-
     <div className={styles.dashboard}>
-
-      <div className={styles.card}>
-        <h3>Total Students</h3>
-        <p>{total}</p>
+      <div className={styles.cards}>
+        {stats.map((stat, i) => (
+          <div className={styles.card} key={i}>
+            <div className={styles.cardLeft}>
+              <span className={styles.cardLabel}>{stat.label}</span>
+              <span className={styles.cardValue}>{stat.value}</span>
+            </div>
+            <div className={`${styles.iconBox} ${stat.iconBg}`}>
+              {stat.icon}
+            </div>
+          </div>
+        ))}
       </div>
-
-      <div className={styles.card}>
-        <h3>Avg Age</h3>
-        <p>{avgAge.toFixed(0)}</p>
-      </div>
-
-      <div className={styles.card}>
-        <h3>Newest</h3>
-        <p>{newest}</p>
-      </div>
-
     </div>
   );
 };

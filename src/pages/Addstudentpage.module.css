@@ -3,7 +3,6 @@
   min-height: 100vh;
 }
 
-/* Main area (right of sidebar) */
 .mainContent {
   margin-left: 240px;
   width: calc(100% - 240px);
@@ -13,7 +12,6 @@
   min-height: 100vh;
 }
 
-/* Top header bar */
 .header {
   display: flex;
   align-items: center;
@@ -29,7 +27,6 @@
   color: #374151;
 }
 
-/* Page content below header */
 .pageContent {
   padding: 36px 40px;
 }
