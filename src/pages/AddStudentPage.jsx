@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import StudentForm from "../components/StudentForm/StudentForm";
 import { addStudentAPI } from "../services/studentService";
 import { toast } from "react-toastify";
-import styles from "./AddstudentPage.module.css";
+import styles from "./AddStudentPage.module.css";
 import { PanelLeft } from "lucide-react";
 
 function AddStudentPage() {
