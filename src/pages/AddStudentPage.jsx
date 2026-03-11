@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import styles from "./AddStudentPage.module.css";
 import { PanelLeft } from "lucide-react";
 
+
 function AddStudentPage() {
   const [editStudent, setEditStudent] = useState(null);
 
