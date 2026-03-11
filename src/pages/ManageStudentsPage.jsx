@@ -5,7 +5,7 @@ import EditStudentModal from "../components/EditStudentModal/EditStudentModal";
 import styles from "./ManageStudentsPage.module.css";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
-import { PanelLeft, Menu } from "lucide-react";
+import { PanelLeft, Menu, Upload, Download } from "lucide-react";
 
 import {
   getStudentsAPI,
@@ -23,7 +23,6 @@ function ManageStudentsPage() {
   const fetchStudents = async () => {
     try {
       const res = await getStudentsAPI();
-      // Safe guard: always set an array
       setStudents(Array.isArray(res.data) ? res.data : []);
     } catch (error) {
       console.log(error);
@@ -66,6 +65,8 @@ function ManageStudentsPage() {
       }
     };
     reader.readAsArrayBuffer(file);
+    // reset so same file can be re-imported
+    e.target.value = "";
   };
 
   const updateStudent = async (student) => {
@@ -78,7 +79,6 @@ function ManageStudentsPage() {
     }
   };
 
-  // Safe filter: guard against undefined name/email
   const filteredStudents = students.filter((student) => {
     const name = student?.name?.toLowerCase() ?? "";
     const email = student?.email?.toLowerCase() ?? "";
@@ -121,15 +121,26 @@ function ManageStudentsPage() {
               onChange={(e) => setSearch(e.target.value)}
               className={styles.search}
             />
-            <input
-              type="file"
-              accept=".xlsx,.xls"
-              onChange={handleImportExcel}
-              className={styles.importInput}
-            />
-            <button onClick={exportExcel} className={styles.exportBtn}>
-              Export Excel
-            </button>
+
+            <div className={styles.btnGroup}>
+              {/* Hidden file input, triggered by label */}
+              <input
+                type="file"
+                id="importFile"
+                accept=".xlsx,.xls"
+                onChange={handleImportExcel}
+                className={styles.importInput}
+              />
+              <label htmlFor="importFile" className={styles.importLabel}>
+                <Upload size={16} />
+                Import Excel
+              </label>
+
+              <button onClick={exportExcel} className={styles.exportBtn}>
+                <Download size={16} />
+                Export Excel
+              </button>
+            </div>
           </div>
 
           <EditStudentModal
