@@ -1,21 +1,27 @@
 import styles from "./Dashboard.module.css";
 import { Users, TrendingUp, UserPlus, GraduationCap } from "lucide-react";
 
-const Dashboard = ({ students = [] }) => {
+const Dashboard = ({ students }) => {
+  // Safe guard — always work with a valid array
+  const safeStudents = Array.isArray(students) ? students : [];
+
   const avgAge =
-    students.length > 0
+    safeStudents.length > 0
       ? Math.round(
-          students.reduce((sum, s) => sum + Number(s.age), 0) / students.length
+          safeStudents.reduce((sum, s) => sum + (Number(s?.age) || 0), 0) /
+            safeStudents.length
         )
       : 0;
 
   const newestStudent =
-    students.length > 0 ? students[students.length - 1].name : "N/A";
+    safeStudents.length > 0
+      ? safeStudents[safeStudents.length - 1]?.name ?? "N/A"
+      : "N/A";
 
   const stats = [
     {
       label: "TOTAL STUDENTS",
-      value: students.length,
+      value: safeStudents.length,
       icon: <Users size={22} color="white" />,
       iconBg: styles.iconPurple,
     },
@@ -33,7 +39,7 @@ const Dashboard = ({ students = [] }) => {
     },
     {
       label: "ACTIVE",
-      value: students.length,
+      value: safeStudents.length,
       icon: <GraduationCap size={22} color="white" />,
       iconBg: styles.iconGreen,
     },

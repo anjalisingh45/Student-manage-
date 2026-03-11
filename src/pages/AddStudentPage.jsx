@@ -1,14 +1,14 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import StudentForm from "../components/StudentForm/StudentForm";
+import styles from "./AddStudentPage.module.css";
 import { addStudentAPI } from "../services/studentService";
 import { toast } from "react-toastify";
-import styles from "./AddStudentPage.module.css";
-import { PanelLeft } from "lucide-react";
-
+import { PanelLeft, Menu } from "lucide-react";
 
 function AddStudentPage() {
   const [editStudent, setEditStudent] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const addStudent = async (student) => {
     try {
@@ -28,22 +28,22 @@ function AddStudentPage() {
 
   return (
     <div className={styles.layout}>
-      <Sidebar />
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
       <div className={styles.mainContent}>
-        {/* Header Bar */}
         <div className={styles.header}>
+          <button className={styles.hamburger} onClick={() => setSidebarOpen(true)}>
+            <Menu size={22} />
+          </button>
           <PanelLeft size={18} color="#6b7280" />
           <span className={styles.headerTitle}>Student Management System</span>
         </div>
 
-        {/* Page Content */}
         <div className={styles.pageContent}>
           <div className={styles.pageHeading}>
             <h1 className={styles.title}>Add Student</h1>
             <p className={styles.subtitle}>Register a new student to the system</p>
           </div>
-
           <StudentForm
             addStudent={addStudent}
             editStudent={editStudent}

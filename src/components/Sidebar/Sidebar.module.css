@@ -1,3 +1,4 @@
+/* ── Sidebar ── */
 .sidebar {
   width: 240px;
   height: 100vh;
@@ -9,10 +10,20 @@
   flex-direction: column;
   padding: 20px 0;
   font-family: 'Segoe UI', sans-serif;
-  z-index: 100;
+  z-index: 200;
+  transition: transform 0.3s ease;
 }
 
-/* Brand / Logo Area */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+/* ── Brand ── */
 .brand {
   display: flex;
   align-items: center;
@@ -49,7 +60,7 @@
   line-height: 1.3;
 }
 
-/* Nav Section */
+/* ── Nav ── */
 .navSection {
   padding: 0 12px;
 }
@@ -69,7 +80,6 @@
   gap: 4px;
 }
 
-/* Nav Links */
 .link {
   display: flex;
   align-items: center;
@@ -101,4 +111,19 @@
 .link.active .icon {
   color: #818cf8;
   opacity: 1;
+}
+
+/* ── Mobile Overlay ── */
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 199;
+  }
 }

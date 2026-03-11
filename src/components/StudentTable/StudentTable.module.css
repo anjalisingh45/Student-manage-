@@ -1,7 +1,7 @@
 .tableWrapper {
   background: #ffffff;
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;  /* horizontal scroll on mobile */
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
 }
 
@@ -9,9 +9,9 @@
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
+  min-width: 500px; /* prevents squishing */
 }
 
-/* Header */
 .table thead tr {
   background: #f9fafb;
   border-bottom: 1.5px solid #e5e7eb;
@@ -27,7 +27,6 @@
   letter-spacing: 0.06em;
 }
 
-/* Body rows */
 .table tbody tr {
   border-bottom: 1px solid #f3f4f6;
   transition: background 0.15s;
@@ -47,7 +46,6 @@
   font-size: 14px;
 }
 
-/* Actions cell */
 .actions {
   display: flex;
   gap: 8px;
@@ -67,6 +65,7 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .editBtn:hover {
@@ -86,13 +85,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s;
+  white-space: nowrap;
 }
 
 .deleteBtn:hover {
   background: #fecaca;
 }
 
-/* Empty state */
 .emptyState {
   background: #ffffff;
   border-radius: 12px;
@@ -104,4 +103,19 @@
 .noData {
   color: #9ca3af;
   font-size: 15px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .table thead th,
+  .table tbody td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 }
